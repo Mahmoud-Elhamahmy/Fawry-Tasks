@@ -1,0 +1,8 @@
+I have completed the mygrep.sh script according to the task requirements.
+The script supports basic search functionality, -n (show line numbers), -v (invert match), option combinations like -vn, and displays a helpful message when incorrect input is given.
+I also added a --help flag for user assistance.
+All functionalities were tested using the provided testfile.txt, and the outputs correctly mimic the behavior of grep.
+
+In the reflective section, I described how the script processes arguments and options, explained how the structure could evolve to support more advanced options like regex or -c/-l, and shared the most challenging part, which was properly handling the interaction between multiple options.
+
+Thank you for reviewing my work!

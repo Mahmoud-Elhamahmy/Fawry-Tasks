@@ -1,0 +1,48 @@
+1. Breakdown: How the script handles arguments and options
+The script first checks if the --help flag is used and displays usage information.
+
+It uses getopts to parse short options -n and -v.
+
+-n sets a variable show_line_numbers=true.
+
+-v sets invert_match=true.
+
+After parsing options, the script shifts positional arguments, so the next arguments are:
+
+$1 → the search string
+
+$2 → the filename
+
+It validates that both the search string and filename are provided and that the file exists.
+
+Then, it reads the file line-by-line:
+
+Checks if each line matches the search string (case-insensitive).
+
+Applies inversion if -v is set.
+
+Prints the line with or without the line number, depending on the -n flag.
+
+
+
+2. How the structure would change to support regex, -i, -c, or -l options
+Regex support:
+Right now, simple strings are searched with grep -i. For full regex, no major change is needed because grep already handles regular expressions by default. However, to properly handle special characters, more validation might be required when passing patterns.
+
+-i (ignore case):
+Case-insensitivity is already implemented with grep -i. If I wanted to allow the user to choose whether or not to ignore case (-i), I would add another flag (ignore_case) and conditionally add -i to the grep command based on that.
+
+-c (count only):
+Introduce a counter that increases each time a matching line is found. At the end of the script, instead of printing lines, just print the total count.
+
+-l (print filenames with matches):
+Track if any match happens during file processing. If at least one match is found, print the filename instead of printing individual lines.
+
+➡️ Overall, adding these features would require managing modes (print lines, count lines, or print filenames) with some extra flags and conditional behavior inside the file-processing loop.
+
+
+
+3. What part of the script was hardest to implement and why
+The hardest part was handling the combination of options, especially -v (invert match) together with -n (line numbers).
+At first, it was tricky to correctly invert the match logic without breaking the normal matching process.
+Also, making sure that after parsing options, the remaining arguments (search string and filename) are positioned correctly was slightly challenging — using shift carefully was important to avoid argument mismatches.
