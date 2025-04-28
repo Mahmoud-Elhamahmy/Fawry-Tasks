@@ -111,6 +111,56 @@ ip route
 ```shell
 sudo ip route add <network> via <gateway>
 ```
-### F
+### Fix 3: Firewall Blocking
+- Confirmation: If curl or telnet fails, check the firewall status:
+```sh
+sudo ufw status
+sudo iptables -L
+```
+- Fix: If a firewall is blocking access to ports 80/443, allow traffic:
+```sh
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+```
+- Or with iptables:
+```sh
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+```
+### Fix 4: Service Down or Misconfigured
+- Confirmation: Use systemctl to check the status of the web server (e.g., Nginx, Apache, etc.):
+```sh
+sudo systemctl status nginx
+```
+- Fix: If the service is down, restart it:
+```sh
+sudo systemctl restart nginx
+```
+Or check the service configuration to ensure it’s listening on the correct ports.
+### Fix 5: Host File Misconfiguration
+- Confirmation: If DNS resolution is correct but the service is still unreachable, check the /etc/hosts file for any incorrect entries:
+```sh
+sudo nano /etc/hosts
+```
+- Fix: Update or remove any incorrect mappings for internal.example.com.
+### Fix 6: IP Address Change
+- Confirmation: If the DNS resolves to a different IP, verify if the IP has recently changed. You can check logs or compare it with known records.
+- Fix: Update the DNS records for internal.example.com or adjust the configuration to match the new IP.
+#### By addressing each of these potential issues, you can restore connectivity to internal.example.com effectively.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
