@@ -73,7 +73,7 @@ sudo ss -tuln | grep -E '80|443'
 - What to look for:
 <br/>If curl or telnet fails, the issue could be with the service not running, firewall blocking access, or networking issues.
 <br/>If netstat or ss shows no service listening on port 80/443, the service might not be running or misconfigured.<br/>
-3- Trace the Issue – List All Possible Causes:
+3. Trace the Issue – List All Possible Causes:
 <br/>Here’s a breakdown of potential causes for the issue:
 - DNS Misconfiguration:
 <br/>Local DNS server might not have the correct record for internal.example.com.
@@ -86,8 +86,8 @@ sudo ss -tuln | grep -E '80|443'
 - Host File Misconfiguration:
 <br/>Local /etc/hosts file might have an incorrect or outdated entry for internal.example.com.
 - IP Address Change:
-<br/>The resolved IP for internal.example.com might have changed, but DNS hasn’t been updated.
-4- Propose and Apply Fixes:
+<br/>The resolved IP for internal.example.com might have changed, but DNS hasn’t been updated.<br/>
+4. Propose and Apply Fixes:
 ### Fix 1: DNS Misconfiguration
 - Confirmation: If dig or nslookup fails with the local resolver but works with Google's DNS, the issue lies with your local DNS.
 - Fix: You can try to refresh the DNS cache or check your /etc/resolv.conf settings.
