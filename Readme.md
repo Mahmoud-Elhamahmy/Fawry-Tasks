@@ -1,4 +1,4 @@
-# mygrep
+# Task 1 mygrep
 
 A mini version of the `grep` command, written in Bash.
 
@@ -23,7 +23,7 @@ This script can:
 
 ## Root Cause Analysis Steps:
 
-1- Verify DNS Resolution:
+1. Verify DNS Resolution:
 <br/>First, you need to compare DNS resolution behavior when using your local DNS resolver (as defined in /etc/resolv.conf) and Google's public DNS resolver (8.8.8.8). You can use dig or nslookup for this:
 ```shell
 dig internal.example.com
@@ -41,8 +41,8 @@ dig internal.example.com
 - ![add to local dns file](https://github.com/user-attachments/assets/b9bd09b2-c2b0-47e8-8e2b-f70e9e58de8a)
 <br/>Bypass DNS Server to check if out config was correct:
 - ![dig bypass dns server](https://github.com/user-attachments/assets/c8f5ce59-38c3-4c2b-a3c4-5f06fcb0d802)
-<br/>Our config is correct
-2- Diagnose Service Reachability:
+<br/>Our config is correct<br/>
+2. Diagnose Service Reachability:
 <br/>Once DNS is resolved, the next step is to verify whether the web service is reachable on the resolved IP address.
 <br/>Steps:
 <br/>First, check the service’s IP address:
