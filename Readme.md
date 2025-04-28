@@ -72,7 +72,7 @@ sudo ss -tuln | grep -E '80|443'
 ``` 
 - What to look for:
 <br/>If curl or telnet fails, the issue could be with the service not running, firewall blocking access, or networking issues.
-<br/>If netstat or ss shows no service listening on port 80/443, the service might not be running or misconfigured.
+<br/>If netstat or ss shows no service listening on port 80/443, the service might not be running or misconfigured.<br/>
 3- Trace the Issue – List All Possible Causes:
 <br/>Here’s a breakdown of potential causes for the issue:
 - DNS Misconfiguration:
